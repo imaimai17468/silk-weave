@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Silk Weave
 
-## Getting Started
+Silk Weave is a sleek and powerful tool designed to effortlessly summarize Slack threads, making it easier to keep track of important conversations without getting lost in the noise. Whether you’re part of a small team or a large organization, Silk Weave helps streamline your communication by providing concise, easy-to-read summaries directly from your Slack threads.
 
-First, run the development server:
+## ✨ Features
+
+- **AI-Powered Summarization**: Automatically generates concise summaries of Slack threads using advanced AI, so you can quickly grasp the essence of any conversation.
+- **Modern UI Components**: Leverages shadcn/ui to provide a sleek, responsive, and accessible interface, enhancing the overall user experience.
+- **Customizable Summary Preferences**: Tailor the summarization settings to match your team's specific needs, ensuring the summaries are as relevant and useful as possible.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Ensure you have [Bun](https://bun.sh/) installed on your system. Bun is a modern JavaScript runtime like Node.js but with built-in tools for faster and more efficient development.
+
+### Installation
+
+Clone the repository and install the dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+bun i
+```
+
+### Development
+
+To start the development server, run:
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will spin up a local server with hot reloading, giving you a seamless development experience.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Technology Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Silk Weave leverages a cutting-edge tech stack to deliver a modern and performant user experience:
 
-## Learn More
+- **[Next.js](https://nextjs.org/)**: The React framework for production, optimized for performance and scalability.
+- **[React](https://reactjs.org/)**: A declarative, efficient, and flexible JavaScript library for building user interfaces.
+- **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
+- **[Biome](https://biomejs.dev/)**: A fast, modern, and comprehensive code formatter and linter that ensures your codebase remains clean and consistent.
+- **[Lefthook](https://github.com/evilmartians/lefthook)**: A powerful Git hooks manager that integrates smoothly with your workflow to run checks and formatting tools before commits.
+Here are the updated sections with the requested changes:
+- **[shadcn/ui](https://ui.shadcn.dev/)**: A collection of beautifully crafted and accessible UI components built on top of Radix UI and Tailwind CSS. It provides you with customizable, reusable components for building modern interfaces.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Here are the key scripts you can use to manage and build the project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **`bun dev`**: Start the development server.
+- **`bun run build`**: Build the production-ready application.
+- **`bun run start`**: Start the production server.
+- **`bun run check`**: Lint and format the codebase with Biome.
+- **`bun run format`**: Automatically format the codebase using Biome.
+- **`bun run init:lefthook`**: Initialize Lefthook for Git hooks.
 
-## Deploy on Vercel
+## 📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](#) or submit a pull request.
+
+## 💬 Feedback
+
+If you have any feedback or suggestions, feel free to reach out or open an issue. We love to hear from the community!
