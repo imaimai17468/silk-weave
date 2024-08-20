@@ -10,16 +10,12 @@ Silk Weave is a sleek and powerful tool designed to effortlessly summarize Slack
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-Ensure you have [Bun](https://bun.sh/) installed on your system. Bun is a modern JavaScript runtime like Node.js but with built-in tools for faster and more efficient development.
-
 ### Installation
 
 Clone the repository and install the dependencies:
 
 ```bash
-bun i
+pnpm i
 ```
 
 ### Development
@@ -27,7 +23,7 @@ bun i
 To start the development server, run:
 
 ```bash
-bun dev
+pnpm dev
 ```
 
 This will spin up a local server with hot reloading, giving you a seamless development experience.
@@ -48,12 +44,12 @@ Here are the updated sections with the requested changes:
 
 Here are the key scripts you can use to manage and build the project:
 
-- **`bun dev`**: Start the development server.
-- **`bun run build`**: Build the production-ready application.
-- **`bun run start`**: Start the production server.
-- **`bun run check`**: Lint and format the codebase with Biome.
-- **`bun run format`**: Automatically format the codebase using Biome.
-- **`bun run init:lefthook`**: Initialize Lefthook for Git hooks.
+- **`pnpm dev`**: Start the development server.
+- **`pnpm run build`**: Build the production-ready application.
+- **`pnpm run start`**: Start the production server.
+- **`pnpm run check`**: Lint and format the codebase with Biome.
+- **`pnpm run format`**: Automatically format the codebase using Biome.
+- **`pnpm run init:lefthook`**: Initialize Lefthook for Git hooks.
 
 ## 📄 License
 
