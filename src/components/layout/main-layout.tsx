@@ -1,4 +1,4 @@
-import { Aurora } from "../parts/Aurora";
+import { Aurora } from "../parts/aurora";
 import { Header } from "../parts/header";
 
 type Props = {
