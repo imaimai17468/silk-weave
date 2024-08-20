@@ -10,7 +10,7 @@ export const MainLayout = ({ children }: Props): React.ReactNode => {
     <>
       <Aurora />
       <Header />
-      {children}
+      <div className="px-16 py-8">{children}</div>
     </>
   );
 };
