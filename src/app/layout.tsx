@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Roboto } from "next/font/google";
 import { MainLayout } from "@/components/layout/main-layout";
