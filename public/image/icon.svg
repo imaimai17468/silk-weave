@@ -1,0 +1,34 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_1_44" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="500" height="500">
+<circle cx="250" cy="250" r="250" fill="#FF433C"/>
+</mask>
+<g mask="url(#mask0_1_44)">
+<rect x="57" y="19" width="25" height="303" fill="#F0D531"/>
+<rect x="90" y="38" width="25" height="253" fill="#F0D531"/>
+<rect x="123" y="14" width="25" height="241" fill="#F0D531"/>
+<rect x="156" width="25" height="222" fill="#F0D531"/>
+<rect x="338.907" y="-109" width="25" height="212" transform="rotate(45 338.907 -109)" fill="#F0D531"/>
+<rect x="338.907" y="-62" width="25" height="212" transform="rotate(45 338.907 -62)" fill="#F0D531"/>
+<rect x="-38" y="192" width="25" height="85" transform="rotate(-90 -38 192)" fill="#94CBCE"/>
+<rect x="410" y="192" width="25" height="109" transform="rotate(-90 410 192)" fill="#94CBCE"/>
+<rect x="-38" y="224" width="25" height="85" transform="rotate(-90 -38 224)" fill="#94CBCE"/>
+<rect x="380" y="224" width="25" height="139" transform="rotate(-90 380 224)" fill="#94CBCE"/>
+<rect x="-38" y="256" width="25" height="85" transform="rotate(-90 -38 256)" fill="#94CBCE"/>
+<rect x="415" y="256" width="25" height="170" transform="rotate(-90 415 256)" fill="#94CBCE"/>
+<rect x="-38" y="288" width="25" height="85" transform="rotate(-90 -38 288)" fill="#94CBCE"/>
+<rect x="449" y="288" width="25" height="202" transform="rotate(-90 449 288)" fill="#94CBCE"/>
+<rect x="407.238" y="19.6688" width="25" height="537.737" transform="rotate(45 407.238 19.6688)" fill="#2AAFE5"/>
+<rect x="304.238" y="312" width="25" height="537.737" transform="rotate(45 304.238 312)" fill="#94CBCE"/>
+<rect x="619.238" y="-243" width="25" height="537.737" transform="rotate(45 619.238 -243)" fill="#EC3730"/>
+<rect x="187" y="132.678" width="25" height="64.4773" transform="rotate(-45 187 132.678)" fill="#EC3730"/>
+<rect x="343" y="235.678" width="25" height="210.38" transform="rotate(-45 343 235.678)" fill="#94CBCE"/>
+<rect x="319" y="259.678" width="25" height="210.38" transform="rotate(-45 319 259.678)" fill="#94CBCE"/>
+<rect x="294" y="283.678" width="25" height="210.38" transform="rotate(-45 294 283.678)" fill="#94CBCE"/>
+<rect x="189.622" y="185.3" width="25" height="26.8277" transform="rotate(-45 189.622 185.3)" fill="#EC3730"/>
+<rect x="567.238" y="-239" width="25" height="499.02" transform="rotate(45 567.238 -239)" fill="#EC3730"/>
+<rect x="431.238" y="45" width="25" height="537.737" transform="rotate(45 431.238 45)" fill="#2AAFE5"/>
+<rect x="328.238" y="337.331" width="25" height="537.737" transform="rotate(45 328.238 337.331)" fill="#94CBCE"/>
+<rect x="458.238" y="67" width="25" height="537.737" transform="rotate(45 458.238 67)" fill="#2AAFE5"/>
+<rect x="352.238" y="361" width="25" height="537.737" transform="rotate(45 352.238 361)" fill="#94CBCE"/>
+</g>
+</svg>
