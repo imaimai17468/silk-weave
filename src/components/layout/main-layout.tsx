@@ -9,8 +9,12 @@ export const MainLayout = ({ children }: Props): React.ReactNode => {
   return (
     <>
       <Aurora />
-      <Header />
-      <div className="px-16 py-8">{children}</div>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <div className="flex-grow flex">
+          <div className="flex-grow">{children}</div>
+        </div>
+      </div>
     </>
   );
 };
