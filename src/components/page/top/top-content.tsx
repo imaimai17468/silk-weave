@@ -1,10 +1,6 @@
-import {
-  ResizableHandle,
-  ResizablePanelGroup,
-  ResizablePanel,
-} from "@/components/ui/resizable";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import { Detail } from "./_components/detail";
 import { Threads } from "./_components/threads";
-import { Results } from "./_components/results";
 
 export const TopContent = (): React.ReactNode => {
   return (
@@ -14,7 +10,7 @@ export const TopContent = (): React.ReactNode => {
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={50}>
-        <Results />
+        <Detail />
       </ResizablePanel>
     </ResizablePanelGroup>
   );
