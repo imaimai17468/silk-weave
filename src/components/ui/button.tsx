@@ -23,16 +23,10 @@ const buttonVariants = cva(
         icon: "h-10 w-10",
         "icon-sm": "h-8 w-8",
       },
-      align: {
-        left: "justify-start",
-        center: "justify-center",
-        right: "justify-end",
-      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
-      align: "center",
     },
   },
 );
@@ -41,13 +35,12 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  align?: "left" | "center" | "right";
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, align = "center", asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    return <Comp className={cn(buttonVariants({ variant, size, align, className }))} ref={ref} {...props} />;
+    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
   },
 );
 Button.displayName = "Button";
