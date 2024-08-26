@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button";
+import { SidebarLayout } from "@/components/layout/sidebar-layout";
+import { TopContent } from "@/components/page/top/top-content";
 
 export default function Home() {
   return (
-    <main>
-      <Button>Get Started!</Button>
-    </main>
+    <SidebarLayout>
+      <TopContent />
+    </SidebarLayout>
   );
 }
