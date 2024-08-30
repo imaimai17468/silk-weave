@@ -1,5 +1,5 @@
-import { Button } from "../ui/button";
 import { PlusCircleIcon } from "lucide-react";
+import { Button } from "../ui/button";
 
 export const Sidebar = () => {
   return (
