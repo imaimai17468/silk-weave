@@ -29,7 +29,9 @@
     "react-dom": "^18",
     "react-resizable-panels": "^2.1.1",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8",
+    "zod-prisma-types": "^3.1.8"
   },
   "devDependencies": {
     "@types/node": "^20",
