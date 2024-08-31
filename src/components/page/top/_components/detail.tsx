@@ -5,20 +5,18 @@ import { ExternalLinkIcon } from "lucide-react";
 export const Detail = () => {
   return (
     <div className="p-4">
-      <div className="border-b-2 border-dashed">
+      <div className="border-b-2 border-dashed flex justify-between">
         <p className="text-2xl font-bold">Detail</p>
+        <Button variant="link" className="w-fit gap-2 flex">
+          Slackで見る
+          <ExternalLinkIcon className="w-4 h-4" />
+        </Button>
       </div>
       <div className="flex flex-col gap-4 py-4">
-        <div className="flex justify-between">
-          <div className="flex gap-2">
-            <Badge className="h-fit">hoge</Badge>
-            <Badge className="h-fit">huge</Badge>
-            <Badge className="h-fit">piyo</Badge>
-          </div>
-          <Button variant="link" className="w-fit gap-2 flex">
-            Slackで見る
-            <ExternalLinkIcon className="w-4 h-4" />
-          </Button>
+        <div className="flex gap-2">
+          <Badge className="h-fit">hoge</Badge>
+          <Badge className="h-fit">huge</Badge>
+          <Badge className="h-fit">piyo</Badge>
         </div>
         <div className="flex flex-col gap-2">
           <p className="text-xl font-bold">Conclusion</p>
@@ -35,10 +33,11 @@ export const Detail = () => {
         <div className="flex flex-col gap-2">
           <p className="text-xl font-bold">Description</p>
           <p>
-            ここにAIが考えた詳細説明が入るよここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
-            ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
-            ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
-            ここにAIが考えた詳細説明が入るよ
+            ここにAIが考えた詳細説明が入るよここにAIが考えた詳細説明が入るよ
+            ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
+            ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
+            ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
+            ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
           </p>
         </div>
 
