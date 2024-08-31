@@ -2,12 +2,12 @@ import { Badge } from "@/components/ui/badge";
 
 type Props = {
   title: string;
-  description: string;
+  user: string;
   tags: string[];
   updatedAt: Date;
 };
 
-export const ThreadCard = ({ title, description, tags, updatedAt }: Props) => {
+export const ThreadCard = ({ title, user, tags, updatedAt }: Props) => {
   return (
     <button
       type="button"
@@ -15,7 +15,7 @@ export const ThreadCard = ({ title, description, tags, updatedAt }: Props) => {
     >
       <p className="absolute top-2 right-2 text-xs text-muted-foreground">{updatedAt.toLocaleDateString()}</p>
       <p className="font-bold">{title}</p>
-      <p className="line-clamp-2 text-muted-foreground">{description}</p>
+      <p className="line-clamp-2 text-muted-foreground">Started by {user}</p>
       <div className="flex gap-2">
         {tags.map((tag) => (
           <Badge key={tag} variant="outline">
