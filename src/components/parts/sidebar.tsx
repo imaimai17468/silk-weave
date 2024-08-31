@@ -1,5 +1,21 @@
 import { PlusCircleIcon } from "lucide-react";
 import { Button } from "../ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export const Sidebar = () => {
   return (
@@ -17,10 +33,35 @@ export const Sidebar = () => {
         <Button variant="ghost" className="justify-start">
           # aaabb
         </Button>
-        <Button variant="outline" className="flex gap-2">
-          <PlusCircleIcon className="w-4 h-4" />
-          Add Channel
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" className="flex gap-2">
+              <PlusCircleIcon className="w-4 h-4" />
+              Add Channel
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Add Channel</DialogTitle>
+              <DialogDescription>
+                監視するチャンネルを追加する
+              </DialogDescription>
+            </DialogHeader>
+            <Select>
+              <SelectTrigger>
+                <SelectValue placeholder="Select a channel" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="apple">Apple</SelectItem>
+                  <SelectItem value="banana">Banana</SelectItem>
+                  <SelectItem value="blueberry">Blueberry</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <Button>Add</Button>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
