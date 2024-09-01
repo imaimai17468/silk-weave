@@ -23,8 +23,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Spinner } from "../../spinner";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast"
 
 export type CreateChannelFormProps = {
   setDialogOpen: (open: boolean) => void;
@@ -33,14 +32,14 @@ export type CreateChannelFormProps = {
 export const CreateChannelForm: React.FC<CreateChannelFormProps> = ({
   setDialogOpen,
 }) => {
+  const { toast } = useToast();
+
   const [state, formAction] = useFormState(createChannel, {
     status: ActionStatus.Idle,
     fields: {
       name: "",
     },
   });
-
-  const [isPending, startTransition] = useTransition();
 
   const form = useForm<Pick<Channel, "name">>({
     resolver: zodResolver(ChannelSchema.pick({ name: true })),
@@ -50,7 +49,7 @@ export const CreateChannelForm: React.FC<CreateChannelFormProps> = ({
   });
 
   const formRef = useRef<HTMLFormElement>(null);
-
+  const [isPending, startTransition] = useTransition();
   const handleFormAction = (data: Pick<Channel, "name">) => {
     startTransition(() => {
       formAction(data);
@@ -59,7 +58,16 @@ export const CreateChannelForm: React.FC<CreateChannelFormProps> = ({
 
   useEffect(() => {
     if (state.status === ActionStatus.Success) {
+      toast({
+        description: "チャンネルを作成しました",
+      });
       setDialogOpen(false);
+    } else if (state.status === ActionStatus.Error) {
+      toast({
+        title: "チャンネルを作成できませんでした",
+        description: state.issue,
+        variant: "destructive",
+      });
     }
   }, [state.status]);
 
@@ -95,13 +103,6 @@ export const CreateChannelForm: React.FC<CreateChannelFormProps> = ({
           {isPending && <Spinner />}
           Create
         </Button>
-        {state.status === ActionStatus.Error && (
-          <Alert variant="destructive">
-            <AlertCircle className="w-4 h-4" />
-            <AlertTitle>Error</AlertTitle>
-            <AlertDescription>{state.issue}</AlertDescription>
-          </Alert>
-        )}
       </form>
     </Form>
   );
