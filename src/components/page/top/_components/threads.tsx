@@ -9,7 +9,7 @@ export const Threads = () => {
       </div>
       <div className="flex flex-col gap-4 py-4">
         <Input placeholder="Search" />
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <ThreadCard title="〇〇についてスレッド" user="いまいまい" tags={["hoge", "fuga"]} updatedAt={new Date()} />
           <ThreadCard title="〇〇についてスレッド" user="いまいまい" tags={["hoge", "fuga"]} updatedAt={new Date()} />
           <ThreadCard title="〇〇についてスレッド" user="いまいまい" tags={["hoge", "fuga"]} updatedAt={new Date()} />
