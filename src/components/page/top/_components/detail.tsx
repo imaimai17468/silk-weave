@@ -13,6 +13,10 @@ export const Detail = () => {
         </Button>
       </div>
       <div className="flex flex-col gap-4 py-4">
+        <div className="flex gap-4 items-end flex-wrap">
+          <p className="text-xl font-bold">〇〇についてスレッド</p>
+          <p className="text-sm text-muted-foreground">by @hoge</p>
+        </div>
         <div className="flex gap-2">
           <Badge className="h-fit">hoge</Badge>
           <Badge className="h-fit">huge</Badge>
@@ -47,6 +51,10 @@ export const Detail = () => {
             <li>huge</li>
             <li>piyo</li>
           </ul>
+        </div>
+        <div className="flex flex-col gap-2 items-end">
+          <p className="text-sm text-muted-foreground">started: 2024-01-01 12:00:00</p>
+          <p className="text-sm text-muted-foreground">updated: 2024-01-01 12:00:00</p>
         </div>
       </div>
     </div>
