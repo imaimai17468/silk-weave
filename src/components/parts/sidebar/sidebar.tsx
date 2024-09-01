@@ -1,5 +1,3 @@
-import { PlusCircleIcon } from "lucide-react";
-import { Button } from "../ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,14 +6,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { PlusCircleIcon } from "lucide-react";
+import { Button } from "../../ui/button";
 
 export const Sidebar = () => {
   return (
@@ -43,9 +36,7 @@ export const Sidebar = () => {
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Add Channel</DialogTitle>
-              <DialogDescription>
-                監視するチャンネルを追加する
-              </DialogDescription>
+              <DialogDescription>監視するチャンネルを追加する</DialogDescription>
             </DialogHeader>
             <Select>
               <SelectTrigger>

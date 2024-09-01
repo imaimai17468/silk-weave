@@ -1,5 +1,9 @@
 import { Sidebar } from "@/components/parts/sidebar";
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 type Props = {
   children: React.ReactNode;
