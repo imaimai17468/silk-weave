@@ -1,31 +1,27 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-import { ChannelSchema } from "@/types";
+import { type Channel, ChannelSchema } from "@/types";
 import { ActionStatus } from "@/types/action-status";
+import { revalidatePath } from "next/cache";
 
 export type FormState =
   | {
       status: ActionStatus.Success;
-      fields?: Record<string, string>;
+      fields?: Pick<Channel, "name">;
       message: string;
     }
   | {
       status: ActionStatus.Error;
-      issues: string;
-      fields?: Record<string, string>;
+      issue: string;
+      fields?: Pick<Channel, "name">;
     }
   | {
       status: ActionStatus.Idle;
-      fields?: Record<string, string>;
+      fields?: Pick<Channel, "name">;
     };
 
-export async function createChannel(
-  _: FormState,
-  formData: FormData
-): Promise<FormState> {
-  console.log(formData);
-  const name: FormDataEntryValue | null = formData.get("name");
+export async function createChannel(_: FormState, data: Pick<Channel, "name">): Promise<FormState> {
+  const name: FormDataEntryValue | null = data.name;
 
   const parsed = ChannelSchema.pick({ name: true }).safeParse({
     name,
@@ -34,19 +30,33 @@ export async function createChannel(
   if (!parsed.success) {
     return {
       status: ActionStatus.Error,
-      issues: "入力されたデータの形式が不正です",
+      issue: "入力されたデータの形式が不正です",
     };
   }
 
-  await fetch("http://localhost:3000/api/channel", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-    }),
-  });
+  try {
+    const response = await fetch("http://localhost:3000/api/channel", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+      }),
+    });
+
+    if (!response.ok) {
+      return {
+        status: ActionStatus.Error,
+        issue: `サーバーエラー: ${response.statusText}`,
+      };
+    }
+  } catch (error) {
+    return {
+      status: ActionStatus.Error,
+      issue: `ネットワークエラー: ${error}`,
+    };
+  }
 
   revalidatePath("/");
 
