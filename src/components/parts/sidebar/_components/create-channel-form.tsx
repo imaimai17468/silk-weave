@@ -1,37 +1,23 @@
 "use client";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { createChannel } from "../_libs/create-channel";
-import { useFormState } from "react-dom";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { type Channel, ChannelSchema } from "@/types";
 import { ActionStatus } from "@/types/action-status";
-import { useTransition, useRef, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChannelSchema, type Channel } from "@/types";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { useEffect, useRef, useTransition } from "react";
+import { useFormState } from "react-dom";
+import { useForm } from "react-hook-form";
 import { Spinner } from "../../spinner";
-import { useToast } from "@/hooks/use-toast"
+import { createChannel } from "../_libs/create-channel";
 
 export type CreateChannelFormProps = {
   setDialogOpen: (open: boolean) => void;
 };
 
-export const CreateChannelForm: React.FC<CreateChannelFormProps> = ({
-  setDialogOpen,
-}) => {
+export const CreateChannelForm: React.FC<CreateChannelFormProps> = ({ setDialogOpen }) => {
   const { toast } = useToast();
 
   const [state, formAction] = useFormState(createChannel, {
@@ -73,11 +59,7 @@ export const CreateChannelForm: React.FC<CreateChannelFormProps> = ({
 
   return (
     <Form {...form}>
-      <form
-        ref={formRef}
-        className="flex flex-col gap-4"
-        onSubmit={form.handleSubmit(handleFormAction)}
-      >
+      <form ref={formRef} className="flex flex-col gap-4" onSubmit={form.handleSubmit(handleFormAction)}>
         <FormField
           control={form.control}
           name="name"

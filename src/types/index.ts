@@ -17,21 +17,9 @@ export const TransactionIsolationLevelSchema = z.enum([
 
 export const ChannelScalarFieldEnumSchema = z.enum(["id", "name"]);
 
-export const ThreadScalarFieldEnumSchema = z.enum([
-  "id",
-  "title",
-  "date",
-  "user",
-  "channelId",
-  "tags",
-]);
+export const ThreadScalarFieldEnumSchema = z.enum(["id", "title", "date", "user", "channelId", "tags"]);
 
-export const DetailScalarFieldEnumSchema = z.enum([
-  "id",
-  "threadId",
-  "contents",
-  "viewInSlackUrl",
-]);
+export const DetailScalarFieldEnumSchema = z.enum(["id", "threadId", "contents", "viewInSlackUrl"]);
 
 export const SortOrderSchema = z.enum(["asc", "desc"]);
 

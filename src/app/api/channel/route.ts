@@ -19,16 +19,10 @@ export const GET = async () => {
     const parsedChannels = ChannelSchema.array().safeParse(channels);
 
     if (!parsedChannels.success) {
-      return NextResponse.json(
-        { messeage: `Parsing Error: ${parsedChannels.error}` },
-        { status: 400 }
-      );
+      return NextResponse.json({ messeage: `Parsing Error: ${parsedChannels.error}` }, { status: 400 });
     }
 
-    return NextResponse.json(
-      { channels: parsedChannels.data },
-      { status: 200 }
-    );
+    return NextResponse.json({ channels: parsedChannels.data }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ messeage: `Error: ${error}` }, { status: 500 });
   } finally {
@@ -44,10 +38,7 @@ export const POST = async (req: Request) => {
     const nameValidation = ChannelSchema.pick({ name }).safeParse({ name });
 
     if (!nameValidation.success) {
-      return NextResponse.json(
-        { message: `Validation Error: ${nameValidation.error}` },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: `Validation Error: ${nameValidation.error}` }, { status: 400 });
     }
 
     const channel = await prisma.channel.create({
