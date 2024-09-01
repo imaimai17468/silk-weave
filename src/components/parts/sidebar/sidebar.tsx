@@ -7,8 +7,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Spinner } from "@/components/ui/spinner";
 import { PlusCircleIcon } from "lucide-react";
+import { Suspense } from "react";
 import { Button } from "../../ui/button";
+import { ChannelList } from "./_components/channel-list";
 
 export const Sidebar = () => {
   return (
@@ -17,15 +20,9 @@ export const Sidebar = () => {
         <p className="text-2xl font-bold">Channels</p>
       </div>
       <div className="flex flex-col gap-2 py-4">
-        <Button variant="ghost" className="justify-start">
-          # aaa
-        </Button>
-        <Button variant="ghost" className="justify-start">
-          # aaaccc
-        </Button>
-        <Button variant="ghost" className="justify-start">
-          # aaabb
-        </Button>
+        <Suspense fallback={<Spinner size="small" />}>
+          <ChannelList />
+        </Suspense>
         <Dialog>
           <DialogTrigger asChild>
             <Button variant="outline" className="flex gap-2">
