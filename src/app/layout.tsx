@@ -35,7 +35,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        {" "}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <MainLayout>{children}</MainLayout>
         </ThemeProvider>

@@ -1,5 +1,6 @@
 import { Aurora } from "../parts/aurora";
 import { Header } from "../parts/header";
+import { Toaster } from "../ui/toaster";
 
 type Props = {
   children: React.ReactNode;
@@ -9,6 +10,7 @@ export const MainLayout = ({ children }: Props): React.ReactNode => {
   return (
     <>
       <Aurora />
+      <Toaster />
       <div className="flex flex-col min-h-screen">
         <Header />
         <div className="flex-grow flex">
