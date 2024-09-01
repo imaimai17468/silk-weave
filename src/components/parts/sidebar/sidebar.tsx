@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import { ChannelList } from "./_components/channel-list";
 import { Spinner } from "../spinner";
 import { ChannelCreateDialog } from "./_components/channel-create-dialog";
+import { ChannelList } from "./_components/channel-list";
 
 export const Sidebar = () => {
   return (

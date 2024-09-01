@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -9,9 +10,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { PlusCircleIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { CreateChannelForm } from "./create-channel-form";
 import { useState } from "react";
+import { CreateChannelForm } from "./create-channel-form";
 
 export const ChannelCreateDialog: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

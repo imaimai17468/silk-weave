@@ -1,6 +1,6 @@
 import { getChannels } from "@/components/parts/sidebar/_libs/get-channels";
-import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import { AlertCircle } from "lucide-react";
 
 export const ChannelList = async () => {

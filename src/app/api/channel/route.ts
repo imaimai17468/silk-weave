@@ -1,6 +1,6 @@
+import { ChannelSchema } from "@/types";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
-import { ChannelSchema } from "@/types";
 const prisma = new PrismaClient();
 
 export const connect = async () => {
