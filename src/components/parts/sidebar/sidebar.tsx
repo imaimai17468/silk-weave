@@ -1,17 +1,7 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Spinner } from "@/components/ui/spinner";
-import { PlusCircleIcon } from "lucide-react";
 import { Suspense } from "react";
-import { Button } from "../../ui/button";
 import { ChannelList } from "./_components/channel-list";
+import { Spinner } from "../spinner";
+import { ChannelCreateDialog } from "./_components/channel-create-dialog";
 
 export const Sidebar = () => {
   return (
@@ -20,36 +10,16 @@ export const Sidebar = () => {
         <p className="text-2xl font-bold">Channels</p>
       </div>
       <div className="flex flex-col gap-2 py-4">
-        <Suspense fallback={<Spinner size="small" />}>
+        <Suspense
+          fallback={
+            <div className="flex justify-center">
+              <Spinner />
+            </div>
+          }
+        >
           <ChannelList />
         </Suspense>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline" className="flex gap-2">
-              <PlusCircleIcon className="w-4 h-4" />
-              Add Channel
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Add Channel</DialogTitle>
-              <DialogDescription>監視するチャンネルを追加する</DialogDescription>
-            </DialogHeader>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a channel" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="apple">Apple</SelectItem>
-                  <SelectItem value="banana">Banana</SelectItem>
-                  <SelectItem value="blueberry">Blueberry</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-            <Button>Add</Button>
-          </DialogContent>
-        </Dialog>
+        <ChannelCreateDialog />
       </div>
     </div>
   );
