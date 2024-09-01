@@ -18,17 +18,20 @@ model Channel {
   /// @zod.string.min(1, { message: "チャンネルを選択してください" })
   name     String
   threads  Thread[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt @default(now())
 }
 
 model Thread {
   id         String   @id @default(cuid())
   title      String
-  date       DateTime
   user       String
   channel    Channel  @relation(fields: [channelId], references: [id])
   channelId  String
   tags       String[]
   detail     Detail?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt @default(now())
 }
 
 model Detail {
@@ -37,4 +40,6 @@ model Detail {
   threadId     String   @unique
   contents     String?
   viewInSlackUrl String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt @default(now())
 }

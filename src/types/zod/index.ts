@@ -15,11 +15,26 @@ export const TransactionIsolationLevelSchema = z.enum([
   "Serializable",
 ]);
 
-export const ChannelScalarFieldEnumSchema = z.enum(["id", "name"]);
+export const ChannelScalarFieldEnumSchema = z.enum(["id", "name", "createdAt", "updatedAt"]);
 
-export const ThreadScalarFieldEnumSchema = z.enum(["id", "title", "date", "user", "channelId", "tags"]);
+export const ThreadScalarFieldEnumSchema = z.enum([
+  "id",
+  "title",
+  "user",
+  "channelId",
+  "tags",
+  "createdAt",
+  "updatedAt",
+]);
 
-export const DetailScalarFieldEnumSchema = z.enum(["id", "threadId", "contents", "viewInSlackUrl"]);
+export const DetailScalarFieldEnumSchema = z.enum([
+  "id",
+  "threadId",
+  "contents",
+  "viewInSlackUrl",
+  "createdAt",
+  "updatedAt",
+]);
 
 export const SortOrderSchema = z.enum(["asc", "desc"]);
 
@@ -37,6 +52,8 @@ export const NullsOrderSchema = z.enum(["first", "last"]);
 export const ChannelSchema = z.object({
   id: z.string().cuid(),
   name: z.string().min(1, { message: "チャンネルを選択してください" }),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
 });
 
 export type Channel = z.infer<typeof ChannelSchema>;
@@ -48,10 +65,11 @@ export type Channel = z.infer<typeof ChannelSchema>;
 export const ThreadSchema = z.object({
   id: z.string().cuid(),
   title: z.string(),
-  date: z.coerce.date(),
   user: z.string(),
   channelId: z.string(),
   tags: z.string().array(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
 });
 
 export type Thread = z.infer<typeof ThreadSchema>;
@@ -65,6 +83,8 @@ export const DetailSchema = z.object({
   threadId: z.string(),
   contents: z.string().nullable(),
   viewInSlackUrl: z.string(),
+  createdAt: z.coerce.date(),
+  updatedAt: z.coerce.date(),
 });
 
 export type Detail = z.infer<typeof DetailSchema>;
