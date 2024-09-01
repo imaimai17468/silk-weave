@@ -1,5 +1,5 @@
 import { connect } from "@/lib/connect";
-import { ChannelSchema } from "@/types";
+import { ChannelSchema } from "@/types/zod";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 

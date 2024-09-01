@@ -1,7 +1,7 @@
 "use server";
 
-import { type Channel, ChannelSchema } from "@/types";
 import { ActionStatus } from "@/types/action-status";
+import { type Channel, ChannelSchema } from "@/types/zod";
 import { revalidatePath } from "next/cache";
 
 export type FormState =

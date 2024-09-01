@@ -1,4 +1,4 @@
-import type { Channel } from "@/types";
+import type { Channel } from "@/types/zod";
 
 export const getChannels = async (): Promise<Channel[] | undefined> => {
   try {
