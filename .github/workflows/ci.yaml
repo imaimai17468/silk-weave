@@ -37,5 +37,8 @@ jobs:
       - name: Run TypeScript Compiler
         run: pnpm tsc
 
+      - name: Generate Prisma Client
+        run: pnpm prisma generate
+
       - name: Build Project
         run: pnpm run build
