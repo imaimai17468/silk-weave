@@ -15,6 +15,7 @@ datasource db {
 
 model Channel {
   id       String    @id @default(cuid())
+  /// @zod.string.min(1, { message: "チャンネルを選択してください" })
   name     String
   threads  Thread[]
 }

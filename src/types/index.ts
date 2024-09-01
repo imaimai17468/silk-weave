@@ -17,9 +17,21 @@ export const TransactionIsolationLevelSchema = z.enum([
 
 export const ChannelScalarFieldEnumSchema = z.enum(["id", "name"]);
 
-export const ThreadScalarFieldEnumSchema = z.enum(["id", "title", "date", "user", "channelId", "tags"]);
+export const ThreadScalarFieldEnumSchema = z.enum([
+  "id",
+  "title",
+  "date",
+  "user",
+  "channelId",
+  "tags",
+]);
 
-export const DetailScalarFieldEnumSchema = z.enum(["id", "threadId", "contents", "viewInSlackUrl"]);
+export const DetailScalarFieldEnumSchema = z.enum([
+  "id",
+  "threadId",
+  "contents",
+  "viewInSlackUrl",
+]);
 
 export const SortOrderSchema = z.enum(["asc", "desc"]);
 
@@ -36,7 +48,7 @@ export const NullsOrderSchema = z.enum(["first", "last"]);
 
 export const ChannelSchema = z.object({
   id: z.string().cuid(),
-  name: z.string(),
+  name: z.string().min(1, { message: "チャンネルを選択してください" }),
 });
 
 export type Channel = z.infer<typeof ChannelSchema>;
