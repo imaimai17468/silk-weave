@@ -1,9 +1,16 @@
 import { getChannels } from "@/components/parts/sidebar/_libs/get-channels";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import { searchParamsCache, serialize } from "@/utils/searchParams";
 import { AlertCircle } from "lucide-react";
+import Link from "next/link";
 
 export const ChannelList = async () => {
+  const { channelId, threadId } = searchParamsCache.all();
+  const setChannelId = (id: string) => {
+    return serialize("/", { channelId: id, threadId });
+  };
+
   const channels = await getChannels();
 
   if (!channels) {
@@ -28,11 +35,18 @@ export const ChannelList = async () => {
 
   return (
     <>
-      {channels.map((channel) => (
-        <Button variant="ghost" className="justify-start" key={channel.id}>
-          # {channel.name}
-        </Button>
-      ))}
+      {channels.map((channel) => {
+        return (
+          <Button
+            variant={channelId === channel.id ? "default" : "ghost"}
+            className="justify-start"
+            key={channel.id}
+            asChild
+          >
+            <Link href={setChannelId(channel.id)}># {channel.name}</Link>
+          </Button>
+        );
+      })}
     </>
   );
 };
