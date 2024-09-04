@@ -2,7 +2,7 @@ import { getChannels } from "@/components/parts/sidebar/_libs/get-channels";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { searchParamsCache, serialize } from "@/utils/searchParams";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, EyeOff } from "lucide-react";
 import Link from "next/link";
 
 export const ChannelList = async () => {
@@ -26,7 +26,7 @@ export const ChannelList = async () => {
   if (channels.length === 0) {
     return (
       <Alert>
-        <AlertCircle className="w-4 h-4" />
+        <EyeOff className="w-4 h-4" />
         <AlertTitle>No channels</AlertTitle>
         <AlertDescription>Add a channel to get started</AlertDescription>
       </Alert>
