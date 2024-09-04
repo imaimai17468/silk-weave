@@ -1,62 +1,27 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ExternalLinkIcon } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { searchParamsCache } from "@/utils/searchParams";
+import { EyeOff } from "lucide-react";
+import { DetailContent } from "./detail-content";
 
 export const Detail = () => {
+  const { threadId } = searchParamsCache.all();
+
   return (
     <div className="p-4">
-      <div className="border-b-2 border-dashed flex justify-between">
+      <div className="border-b-2 border-dashed">
         <p className="text-2xl font-bold">Detail</p>
-        <Button variant="link" className="w-fit gap-2 flex">
-          Slackで見る
-          <ExternalLinkIcon className="w-4 h-4" />
-        </Button>
       </div>
-      <div className="flex flex-col gap-4 py-4">
-        <div className="flex gap-4 items-end flex-wrap">
-          <p className="text-xl font-bold">〇〇についてスレッド</p>
-          <p className="text-sm text-muted-foreground">by @hoge</p>
+      {threadId ? (
+        <DetailContent />
+      ) : (
+        <div className="py-4">
+          <Alert>
+            <EyeOff className="w-4 h-4" />
+            <AlertTitle>No Detail</AlertTitle>
+            <AlertDescription>Please select a channel</AlertDescription>
+          </Alert>
         </div>
-        <div className="flex gap-2">
-          <Badge className="h-fit">hoge</Badge>
-          <Badge className="h-fit">huge</Badge>
-          <Badge className="h-fit">piyo</Badge>
-        </div>
-        <div className="flex flex-col gap-2">
-          <p className="text-xl font-bold">Conclusion</p>
-          <p>ここにAIが考えた結論が入るよ</p>
-        </div>
-        <div className="flex flex-col gap-2">
-          <p className="text-xl font-bold">Key Points</p>
-          <ul className="list-disc list-inside">
-            <li>hoge</li>
-            <li>huge</li>
-            <li>piyo</li>
-          </ul>
-        </div>
-        <div className="flex flex-col gap-2">
-          <p className="text-xl font-bold">Description</p>
-          <p>
-            ここにAIが考えた詳細説明が入るよここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
-            ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
-            ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ ここにAIが考えた詳細説明が入るよ
-            ここにAIが考えた詳細説明が入るよ
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <p className="text-xl font-bold">Next Action</p>
-          <ul className="list-disc list-inside">
-            <li>hoge</li>
-            <li>huge</li>
-            <li>piyo</li>
-          </ul>
-        </div>
-        <div className="flex flex-col gap-2 items-end">
-          <p className="text-sm text-muted-foreground">started: 2024-01-01 12:00:00</p>
-          <p className="text-sm text-muted-foreground">updated: 2024-01-01 12:00:00</p>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
