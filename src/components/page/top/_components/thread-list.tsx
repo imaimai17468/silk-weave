@@ -3,10 +3,11 @@ import { ThreadCard } from "./thread-card";
 
 type ThreadListProps = {
   channelId: string;
+  threadId: string | null;
   onSelect: (threadId: string) => string;
 };
 
-export const ThreadList: React.FC<ThreadListProps> = ({ channelId, onSelect }) => {
+export const ThreadList: React.FC<ThreadListProps> = ({ channelId, threadId, onSelect }) => {
   // TODO: スレッドを取得する
   console.log("getThreads: ", channelId);
 
@@ -20,6 +21,7 @@ export const ThreadList: React.FC<ThreadListProps> = ({ channelId, onSelect }) =
           tags={["hoge", "fuga"]}
           updatedAt={new Date()}
           href={onSelect("test-thread-id-1")}
+          isSelected={threadId === "test-thread-id-1"}
         />
         <ThreadCard
           title="〇〇についてスレッド"
@@ -27,6 +29,7 @@ export const ThreadList: React.FC<ThreadListProps> = ({ channelId, onSelect }) =
           tags={["hoge", "fuga"]}
           updatedAt={new Date()}
           href={onSelect("test-thread-id-2")}
+          isSelected={threadId === "test-thread-id-2"}
         />
         <ThreadCard
           title="〇〇についてスレッド"
@@ -34,6 +37,7 @@ export const ThreadList: React.FC<ThreadListProps> = ({ channelId, onSelect }) =
           tags={["hoge", "fuga"]}
           updatedAt={new Date()}
           href={onSelect("test-thread-id-3")}
+          isSelected={threadId === "test-thread-id-3"}
         />
       </div>
     </div>

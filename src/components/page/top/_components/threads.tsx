@@ -4,7 +4,7 @@ import { EyeOff } from "lucide-react";
 import { ThreadList } from "./thread-list";
 
 export const Threads = () => {
-  const { channelId } = searchParamsCache.all();
+  const { channelId, threadId } = searchParamsCache.all();
   const setThreadId = (id: string) => {
     return serialize("/", { channelId, threadId: id });
   };
@@ -15,7 +15,7 @@ export const Threads = () => {
         <p className="text-2xl font-bold">Threads</p>
       </div>
       {channelId ? (
-        <ThreadList channelId={channelId} onSelect={setThreadId} />
+        <ThreadList channelId={channelId} threadId={threadId} onSelect={setThreadId} />
       ) : (
         <div className="py-4">
           <Alert>
