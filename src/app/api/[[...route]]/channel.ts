@@ -21,7 +21,11 @@ export const channelRoute = new Hono()
   })
   .post(
     "/",
-    zValidator("form", ChannelSchema.pick({ name: true })),
+    zValidator("form", ChannelSchema.pick({ name: true }), (result, c) => {
+      if (!result.success) {
+        return c.json({ error: result.error }, 400);
+      }
+    }),
     async (c) => {
       const data = c.req.valid("form");
 
