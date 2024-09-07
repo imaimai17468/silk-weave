@@ -5,14 +5,13 @@ import { map } from "remeda";
 
 export const getChannels = async (): Promise<Channel[] | undefined> => {
   try {
-    const res = await client.api.channel
-      .$get()
-      .then((res) => res.json())
-      .catch((error) => {
-        throw new Error(`Failed to fetch channels: ${error}`);
-      });
+    const res = await client.api.channel.$get();
 
-    const data = map(res, (channel) => ({
+    if (!res.ok) {
+      throw new Error(`status: ${res.status} Failed to fetch channels: ${res.statusText}`);
+    }
+
+    const data = map(await res.json(), (channel) => ({
       ...channel,
       createdAt: new Date(channel.createdAt),
       updatedAt: new Date(channel.updatedAt),

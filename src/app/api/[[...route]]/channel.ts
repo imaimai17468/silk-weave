@@ -11,16 +11,26 @@ export const channelRoute = new Hono()
     await connect();
     const channels = await prisma.channel.findMany();
 
-    return c.json(channels);
+    const parsedChannels = ChannelSchema.array().safeParse(channels);
+
+    if (!parsedChannels.success) {
+      return c.json({ error: parsedChannels.error }, 400);
+    }
+
+    return c.json(parsedChannels.data);
   })
-  .post("/", zValidator("form", ChannelSchema.pick({ name: true })), async (c) => {
-    const data = c.req.valid("form");
+  .post(
+    "/",
+    zValidator("form", ChannelSchema.pick({ name: true })),
+    async (c) => {
+      const data = c.req.valid("form");
 
-    const channel = await prisma.channel.create({
-      data: {
-        name: data.name,
-      },
-    });
+      const channel = await prisma.channel.create({
+        data: {
+          name: data.name,
+        },
+      });
 
-    return c.json(channel);
-  });
+      return c.json(channel);
+    }
+  );
