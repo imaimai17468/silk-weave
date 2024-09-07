@@ -1,5 +1,6 @@
 "use server";
 
+import { client } from "@/lib/hono";
 import { ActionStatus } from "@/types/action-status";
 import { type Channel, ChannelSchema } from "@/types/zod";
 import { revalidatePath } from "next/cache";
@@ -35,20 +36,14 @@ export async function createChannel(_: FormState, data: Pick<Channel, "name">): 
   }
 
   try {
-    const response = await fetch("http://localhost:3000/api/channel", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-      }),
+    const response = await client.api.channel.$post({
+      form: parsed.data,
     });
 
     if (!response.ok) {
       return {
         status: ActionStatus.Error,
-        issue: `サーバーエラー: ${response.statusText}`,
+        issue: `サーバーエラー: ${response.status}`,
       };
     }
   } catch (error) {
