@@ -1,6 +1,6 @@
-import { getChannels } from "@/components/parts/sidebar/_libs/get-channels";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import { getChannels } from "@/repositories/channel/get-channels";
 import { searchParamsCache, serialize } from "@/utils/searchParams";
 import { AlertCircle, EyeOff } from "lucide-react";
 import Link from "next/link";

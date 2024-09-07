@@ -13,8 +13,8 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import { useEffect, useRef, useTransition } from "react";
 import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
+import { createChannel } from "../../../../repositories/channel/create-channel";
 import { Spinner } from "../../spinner";
-import { createChannel } from "../_libs/create-channel";
 
 export type CreateChannelFormProps = {
   setDialogOpen: (open: boolean) => void;
