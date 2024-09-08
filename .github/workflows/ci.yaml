@@ -6,39 +6,21 @@ on:
       - '**'
 
 jobs:
-  setup:
+  biome:
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        node-version: [20]
-
     steps:
       - uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.9.0
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-      - name: Save node_modules
-        uses: actions/upload-artifact@v3
-        with:
-          name: node-modules
-          path: node_modules
-
-  biome:
-    runs-on: ubuntu-22.04
-    needs: setup
-    steps:
-      - name: Download node_modules
-        uses: actions/download-artifact@v3
-        with:
-          name: node-modules
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
         with:
@@ -48,23 +30,37 @@ jobs:
 
   typescript:
     runs-on: ubuntu-22.04
-    needs: setup
     steps:
-      - name: Download node_modules
-        uses: actions/download-artifact@v3
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          name: node-modules
+          version: 9.9.0
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
       - name: Run TypeScript Compiler
         run: pnpm tsc
 
   build:
     runs-on: ubuntu-22.04
-    needs: [setup, biome, typescript]
     steps:
-      - name: Download node_modules
-        uses: actions/download-artifact@v3
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          name: node-modules
+          version: 9.9.0
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
       - name: Generate Prisma Client
         run: pnpm prisma generate
       - name: Build Project
