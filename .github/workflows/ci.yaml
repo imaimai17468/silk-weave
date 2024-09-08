@@ -25,6 +25,8 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
+      - name: Generate Prisma Client
+        run: pnpm prisma generate
 
   biome:
     runs-on: ubuntu-22.04
@@ -44,16 +46,9 @@ jobs:
       - name: Run TypeScript Compiler
         run: pnpm tsc
 
-  prisma:
-    runs-on: ubuntu-22.04
-    needs: setup
-    steps:
-      - name: Generate Prisma Client
-        run: pnpm prisma generate
-
   build:
     runs-on: ubuntu-22.04
-    needs: [setup, biome, typescript, prisma]
+    needs: [setup, biome, typescript]
     steps:
       - name: Build Project
         run: pnpm run build
