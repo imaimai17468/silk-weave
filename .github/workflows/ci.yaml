@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
     branches:
-      - main
+      - '**'
 
 jobs:
   setup:
@@ -25,13 +25,20 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-      - name: Generate Prisma Client
-        run: pnpm prisma generate
+      - name: Save node_modules
+        uses: actions/upload-artifact@v3
+        with:
+          name: node-modules
+          path: node_modules
 
   biome:
     runs-on: ubuntu-22.04
     needs: setup
     steps:
+      - name: Download node_modules
+        uses: actions/download-artifact@v3
+        with:
+          name: node-modules
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
         with:
@@ -43,6 +50,10 @@ jobs:
     runs-on: ubuntu-22.04
     needs: setup
     steps:
+      - name: Download node_modules
+        uses: actions/download-artifact@v3
+        with:
+          name: node-modules
       - name: Run TypeScript Compiler
         run: pnpm tsc
 
@@ -50,5 +61,11 @@ jobs:
     runs-on: ubuntu-22.04
     needs: [setup, biome, typescript]
     steps:
+      - name: Download node_modules
+        uses: actions/download-artifact@v3
+        with:
+          name: node-modules
+      - name: Generate Prisma Client
+        run: pnpm prisma generate
       - name: Build Project
         run: pnpm run build
