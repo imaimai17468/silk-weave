@@ -43,6 +43,8 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
+      - name: Generate Prisma Client
+        run: pnpm prisma generate
       - name: Run TypeScript Compiler
         run: pnpm tsc
 
