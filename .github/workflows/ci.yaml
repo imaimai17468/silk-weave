@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  setup:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
@@ -26,19 +26,34 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+  biome:
+    runs-on: ubuntu-22.04
+    needs: setup
+    steps:
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
         with:
           version: latest
-
       - name: Run Biome
         run: biome ci ./src
 
+  typescript:
+    runs-on: ubuntu-22.04
+    needs: setup
+    steps:
       - name: Run TypeScript Compiler
         run: pnpm tsc
 
+  prisma:
+    runs-on: ubuntu-22.04
+    needs: setup
+    steps:
       - name: Generate Prisma Client
         run: pnpm prisma generate
 
+  build:
+    runs-on: ubuntu-22.04
+    needs: [setup, biome, typescript, prisma]
+    steps:
       - name: Build Project
         run: pnpm run build
