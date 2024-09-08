@@ -63,12 +63,9 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-      - name: Load .env variables
-        run: |
-          if [ -f .env ]; then
-            export $(cat .env | xargs)
-          fi
       - name: Generate Prisma Client
         run: pnpm prisma generate
       - name: Build Project
+        env:
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
         run: pnpm run build
