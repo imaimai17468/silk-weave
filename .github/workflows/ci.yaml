@@ -3,42 +3,69 @@ name: CI
 on:
   pull_request:
     branches:
-      - main
+      - '**'
 
 jobs:
-  test:
+  biome:
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        node-version: [20]
-
     steps:
       - uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.9.0
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
         with:
           version: latest
-
       - name: Run Biome
         run: biome ci ./src
 
+  typescript:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.9.0
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Generate Prisma Client
+        run: pnpm prisma generate
       - name: Run TypeScript Compiler
         run: pnpm tsc
 
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.9.0
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
       - name: Generate Prisma Client
         run: pnpm prisma generate
-
       - name: Build Project
+        env:
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
         run: pnpm run build
