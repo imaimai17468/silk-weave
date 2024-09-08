@@ -1,8 +1,8 @@
-import { zValidator } from "@hono/zod-validator";
-import { Hono } from "hono";
-import { ChannelSchema } from "@/types/zod";
 import { connect } from "@/lib/connect";
+import { ChannelSchema } from "@/types/zod";
+import { zValidator } from "@hono/zod-validator";
 import { PrismaClient } from "@prisma/client";
+import { Hono } from "hono";
 
 const prisma = new PrismaClient();
 
@@ -36,5 +36,5 @@ export const channelRoute = new Hono()
       });
 
       return c.json(channel);
-    }
+    },
   );
