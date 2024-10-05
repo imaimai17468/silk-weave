@@ -1,5 +1,5 @@
 import { client } from "@/lib/hono";
-import { type DetailWithThread, DetailWithThreadSchema } from "@/types/zod";
+import { type DetailWithThread, DetailWithThreadSchema } from "@/types/detail-with-thread";
 
 type Props = {
   threadId: string;

@@ -1,5 +1,5 @@
 import { connect } from "@/lib/connect";
-import { DetailWithThreadSchema } from "@/types/zod";
+import { DetailWithThreadSchema } from "@/types/detail-with-thread";
 import { PrismaClient } from "@prisma/client";
 import { Hono } from "hono";
 
