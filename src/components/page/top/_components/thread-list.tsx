@@ -34,7 +34,7 @@ export const ThreadList: React.FC<ThreadListProps> = async ({ channelId, threadI
   }
 
   return (
-    <div className="flex flex-col gap-4 py-4">
+    <div className="flex flex-col gap-4">
       <Input placeholder="Search" />
       <div className="flex flex-col gap-4">
         {threads.map((thread) => (

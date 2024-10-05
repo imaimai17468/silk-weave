@@ -1,5 +1,5 @@
 import { connect } from "@/lib/connect";
-import { DetailSchema } from "@/types/zod";
+import { DetailWithThreadSchema } from "@/types/detail-with-thread";
 import { PrismaClient } from "@prisma/client";
 import { Hono } from "hono";
 
@@ -13,17 +13,26 @@ export const detailRoute = new Hono().get("/", async (c) => {
   }
 
   await connect();
-  const detail = await prisma.detail.findMany({
+  const detail = await prisma.detail.findUnique({
     where: {
       threadId,
     },
+    include: {
+      thread: {
+        select: {
+          title: true,
+          user: true,
+          tags: true,
+        },
+      },
+    },
   });
 
-  const parsedDetails = DetailSchema.array().safeParse(detail);
+  const parsedDetail = DetailWithThreadSchema.safeParse(detail);
 
-  if (!parsedDetails.success) {
-    return c.json({ error: parsedDetails.error }, 400);
+  if (!parsedDetail.success) {
+    return c.json({ error: parsedDetail.error }, 400);
   }
 
-  return c.json(parsedDetails.data);
+  return c.json(parsedDetail.data);
 });
