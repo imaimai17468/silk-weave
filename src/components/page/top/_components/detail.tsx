@@ -1,6 +1,8 @@
+import { Spinner } from "@/components/parts/spinner";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { searchParamsCache } from "@/utils/searchParams";
 import { EyeOff } from "lucide-react";
+import { Suspense } from "react";
 import { DetailContent } from "./detail-content";
 
 export const Detail = () => {
@@ -12,7 +14,15 @@ export const Detail = () => {
         <p className="text-2xl font-bold">Detail</p>
       </div>
       {threadId ? (
-        <DetailContent />
+        <Suspense
+          fallback={
+            <div className="flex justify-center">
+              <Spinner />
+            </div>
+          }
+        >
+          <DetailContent threadId={threadId} />
+        </Suspense>
       ) : (
         <div className="py-4">
           <Alert>
