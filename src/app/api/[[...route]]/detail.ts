@@ -13,17 +13,17 @@ export const detailRoute = new Hono().get("/", async (c) => {
   }
 
   await connect();
-  const detail = await prisma.detail.findMany({
+  const detail = await prisma.detail.findUnique({
     where: {
       threadId,
     },
   });
 
-  const parsedDetails = DetailSchema.array().safeParse(detail);
+  const parsedDetail = DetailSchema.safeParse(detail);
 
-  if (!parsedDetails.success) {
-    return c.json({ error: parsedDetails.error }, 400);
+  if (!parsedDetail.success) {
+    return c.json({ error: parsedDetail.error }, 400);
   }
 
-  return c.json(parsedDetails.data);
+  return c.json(parsedDetail.data);
 });
