@@ -13,25 +13,27 @@ export const Detail = () => {
       <div className="border-b-2 border-dashed">
         <p className="text-2xl font-bold">Detail</p>
       </div>
-      {threadId ? (
-        <Suspense
-          fallback={
-            <div className="flex justify-center">
-              <Spinner />
-            </div>
-          }
-        >
-          <DetailContent threadId={threadId} />
-        </Suspense>
-      ) : (
-        <div className="py-4">
-          <Alert>
-            <EyeOff className="w-4 h-4" />
-            <AlertTitle>No Detail</AlertTitle>
-            <AlertDescription>Please select a channel</AlertDescription>
-          </Alert>
-        </div>
-      )}
+      <div className="py-4">
+        {threadId ? (
+          <Suspense
+            fallback={
+              <div className="flex justify-center">
+                <Spinner />
+              </div>
+            }
+          >
+            <DetailContent threadId={threadId} />
+          </Suspense>
+        ) : (
+          <div className="py-4">
+            <Alert>
+              <EyeOff className="w-4 h-4" />
+              <AlertTitle>No Detail</AlertTitle>
+              <AlertDescription>Please select a channel</AlertDescription>
+            </Alert>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
