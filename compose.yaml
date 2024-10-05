@@ -1,0 +1,12 @@
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+      args:
+        NEXT_PUBLIC_APP_URL: http://localhost:3000/
+    ports:
+      - 127.0.0.1:3000:3000
+    env_file:
+      - .env
