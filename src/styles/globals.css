@@ -128,18 +128,6 @@
   @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
 }
 
-.markdown code {
-  @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-5;
-}
-
-.markdown pre {
-  @apply bg-gray-100 rounded p-4;
-}
-
-.markdown pre code {
-  @apply block bg-transparent p-0 overflow-visible rounded-none;
-}
-
 .markdown ul {
   @apply text-base pl-8 list-disc;
 }
