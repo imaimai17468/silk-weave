@@ -5,6 +5,8 @@ import { getDetail } from "@/repositories/detail/get-detail";
 import { ExternalLinkIcon } from "lucide-react";
 import { AlertCircle } from "lucide-react";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type DetailContentProps = {
   threadId: string;
@@ -36,7 +38,11 @@ export const DetailContent: React.FC<DetailContentProps> = async ({ threadId }) 
           </Badge>
         ))}
       </div>
-      <div>{detail.contents}</div>
+      {detail.contents && (
+        <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">
+          {detail.contents}
+        </ReactMarkdown>
+      )}
       <div className="flex flex-col gap-2 items-end">
         <p className="text-sm text-muted-foreground">started: {detail.createdAt.toLocaleDateString()}</p>
         <p className="text-sm text-muted-foreground">updated: {detail.updatedAt.toLocaleDateString()}</p>
