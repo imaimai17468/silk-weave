@@ -5,12 +5,6 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# ビルド引数を受け取る
-ARG NEXT_PUBLIC_APP_URL
-
-# 環境変数として設定
-ENV NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
-
 # Install dependencies
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
