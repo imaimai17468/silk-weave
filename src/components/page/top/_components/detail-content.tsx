@@ -1,3 +1,4 @@
+import { MarkdownPre } from "@/components/parts/markdown-pre";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -39,7 +40,13 @@ export const DetailContent: React.FC<DetailContentProps> = async ({ threadId }) 
         ))}
       </div>
       {detail.contents && (
-        <ReactMarkdown remarkPlugins={[remarkGfm]} className="markdown">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            pre: MarkdownPre,
+          }}
+          className="markdown"
+        >
           {detail.contents}
         </ReactMarkdown>
       )}
