@@ -1,54 +1,5 @@
 import { z } from "zod";
 
-/////////////////////////////////////////
-// HELPER FUNCTIONS
-/////////////////////////////////////////
-
-/////////////////////////////////////////
-// ENUMS
-/////////////////////////////////////////
-
-export const TransactionIsolationLevelSchema = z.enum([
-  "ReadUncommitted",
-  "ReadCommitted",
-  "RepeatableRead",
-  "Serializable",
-]);
-
-export const ChannelScalarFieldEnumSchema = z.enum(["id", "name", "createdAt", "updatedAt"]);
-
-export const ThreadScalarFieldEnumSchema = z.enum([
-  "id",
-  "title",
-  "user",
-  "channelId",
-  "tags",
-  "createdAt",
-  "updatedAt",
-]);
-
-export const DetailScalarFieldEnumSchema = z.enum([
-  "id",
-  "threadId",
-  "contents",
-  "viewInSlackUrl",
-  "createdAt",
-  "updatedAt",
-]);
-
-export const SortOrderSchema = z.enum(["asc", "desc"]);
-
-export const QueryModeSchema = z.enum(["default", "insensitive"]);
-
-export const NullsOrderSchema = z.enum(["first", "last"]);
-/////////////////////////////////////////
-// MODELS
-/////////////////////////////////////////
-
-/////////////////////////////////////////
-// CHANNEL SCHEMA
-/////////////////////////////////////////
-
 export const ChannelSchema = z.object({
   id: z.string().cuid(),
   name: z.string().min(1, { message: "チャンネルを選択してください" }),
@@ -57,10 +8,6 @@ export const ChannelSchema = z.object({
 });
 
 export type Channel = z.infer<typeof ChannelSchema>;
-
-/////////////////////////////////////////
-// THREAD SCHEMA
-/////////////////////////////////////////
 
 export const ThreadSchema = z.object({
   id: z.string().cuid(),
@@ -74,10 +21,6 @@ export const ThreadSchema = z.object({
 
 export type Thread = z.infer<typeof ThreadSchema>;
 
-/////////////////////////////////////////
-// DETAIL SCHEMA
-/////////////////////////////////////////
-
 export const DetailSchema = z.object({
   id: z.string().cuid(),
   threadId: z.string(),
@@ -88,3 +31,9 @@ export const DetailSchema = z.object({
 });
 
 export type Detail = z.infer<typeof DetailSchema>;
+
+export const DetailWithThreadSchema = DetailSchema.extend({
+  thread: ThreadSchema.pick({ title: true, user: true, tags: true }),
+});
+
+export type DetailWithThread = z.infer<typeof DetailWithThreadSchema>;
