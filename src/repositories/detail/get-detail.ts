@@ -1,12 +1,11 @@
 import { client } from "@/lib/hono";
-import { DetailSchema } from "@/types/zod";
-import type { Detail } from "@prisma/client";
+import { type DetailWithThread, DetailWithThreadSchema } from "@/types/zod";
 
 type Props = {
   threadId: string;
 };
 
-export const getDetail = async ({ threadId }: Props): Promise<Detail | undefined> => {
+export const getDetail = async ({ threadId }: Props): Promise<DetailWithThread | undefined> => {
   try {
     const res = await client.api.detail.$get({
       query: {
@@ -20,7 +19,7 @@ export const getDetail = async ({ threadId }: Props): Promise<Detail | undefined
 
     const data = await res.json();
 
-    const parsedDetail = DetailSchema.safeParse({
+    const parsedDetail = DetailWithThreadSchema.safeParse({
       ...data,
       createdAt: new Date(data.createdAt),
       updatedAt: new Date(data.updatedAt),

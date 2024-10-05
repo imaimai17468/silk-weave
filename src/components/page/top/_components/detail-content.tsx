@@ -26,13 +26,15 @@ export const DetailContent: React.FC<DetailContentProps> = async ({ threadId }) 
   return (
     <div className="flex flex-col gap-4 py-4">
       <div className="flex gap-4 items-end flex-wrap">
-        <p className="text-xl font-bold">〇〇についてスレッド</p>
-        <p className="text-sm text-muted-foreground">by @hoge</p>
+        <p className="text-xl font-bold">{detail.thread.title}</p>
+        <p className="text-sm text-muted-foreground">by {detail.thread.user}</p>
       </div>
       <div className="flex gap-2">
-        <Badge className="h-fit">hoge</Badge>
-        <Badge className="h-fit">huge</Badge>
-        <Badge className="h-fit">piyo</Badge>
+        {detail.thread.tags.map((tag) => (
+          <Badge className="h-fit" key={tag}>
+            {tag}
+          </Badge>
+        ))}
       </div>
       <div>{detail.contents}</div>
       <div className="flex flex-col gap-2 items-end">

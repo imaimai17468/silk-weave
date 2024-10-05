@@ -1,5 +1,5 @@
 import { connect } from "@/lib/connect";
-import { DetailSchema } from "@/types/zod";
+import { DetailWithThreadSchema } from "@/types/zod";
 import { PrismaClient } from "@prisma/client";
 import { Hono } from "hono";
 
@@ -17,9 +17,18 @@ export const detailRoute = new Hono().get("/", async (c) => {
     where: {
       threadId,
     },
+    include: {
+      thread: {
+        select: {
+          title: true,
+          user: true,
+          tags: true,
+        },
+      },
+    },
   });
 
-  const parsedDetail = DetailSchema.safeParse(detail);
+  const parsedDetail = DetailWithThreadSchema.safeParse(detail);
 
   if (!parsedDetail.success) {
     return c.json({ error: parsedDetail.error }, 400);
