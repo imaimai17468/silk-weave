@@ -57,6 +57,7 @@ export const CreateChannelForm: React.FC<CreateChannelFormProps> = ({ setDialogO
         description: state.issue,
         variant: "destructive",
       });
+      setDialogOpen(false);
     }
   }, [state.status]);
 
