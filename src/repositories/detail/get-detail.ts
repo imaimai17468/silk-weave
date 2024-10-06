@@ -1,4 +1,4 @@
-import { client } from "@/lib/hono";
+import { useHonoClient } from "@/lib/hono";
 import { type DetailWithThread, DetailWithThreadSchema } from "@/types/detail-with-thread";
 
 type Props = {
@@ -6,6 +6,8 @@ type Props = {
 };
 
 export const getDetail = async ({ threadId }: Props): Promise<DetailWithThread | undefined> => {
+  const client = await useHonoClient();
+
   try {
     const res = await client.api.detail.$get({
       query: {

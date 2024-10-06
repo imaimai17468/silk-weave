@@ -1,4 +1,4 @@
-import { client } from "@/lib/hono";
+import { useHonoClient } from "@/lib/hono";
 import { ThreadSchema } from "@/types/zod";
 import type { Thread } from "@prisma/client";
 import { map } from "remeda";
@@ -8,6 +8,8 @@ type props = {
 };
 
 export const getThreads = async ({ channelId }: props): Promise<Thread[] | undefined> => {
+  const client = await useHonoClient();
+
   try {
     const res = await client.api.thread.$get({
       query: {
