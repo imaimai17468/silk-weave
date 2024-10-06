@@ -1,6 +1,6 @@
 "use server";
 
-import { client } from "@/lib/hono";
+import { useHonoClient } from "@/lib/hono";
 import { ActionStatus } from "@/types/action-status";
 import { type Channel, ChannelSchema } from "@/types/zod";
 import { revalidatePath } from "next/cache";
@@ -23,6 +23,7 @@ export type FormState =
 
 export async function createChannel(_: FormState, data: Pick<Channel, "name">): Promise<FormState> {
   const name: FormDataEntryValue | null = data.name;
+  const client = await useHonoClient();
 
   const parsed = ChannelSchema.pick({ name: true }).safeParse({
     name,

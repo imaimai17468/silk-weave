@@ -1,9 +1,10 @@
-import { client } from "@/lib/hono";
+import { useHonoClient } from "@/lib/hono";
 import type { Channel } from "@/types/zod";
 import { ChannelSchema } from "@/types/zod";
 import { map } from "remeda";
-
 export const getChannels = async (): Promise<Channel[] | undefined> => {
+  const client = await useHonoClient();
+
   try {
     const res = await client.api.channel.$get();
 
