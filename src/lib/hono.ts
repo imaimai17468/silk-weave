@@ -1,5 +1,15 @@
+import type { AppType } from "@/app/api/[[...route]]/route";
+import { getIapToken } from "@/utils/get-iap-token";
 import { hc } from "hono/client";
 
-import type { AppType } from "@/app/api/[[...route]]/route";
+export const useHonoClient = async () => {
+  const iapToken = await getIapToken();
 
-export const client = hc<AppType>(process.env.NEXT_PUBLIC_APP_URL ?? "");
+  const client = hc<AppType>(process.env.NEXT_PUBLIC_APP_URL ?? "", {
+    headers: {
+      Authorization: `Bearer ${iapToken}`,
+    },
+  });
+
+  return client;
+};
