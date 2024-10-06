@@ -25,13 +25,11 @@ export const Detail = () => {
             <DetailContent threadId={threadId} />
           </Suspense>
         ) : (
-          <div className="py-4">
-            <Alert>
-              <EyeOff className="w-4 h-4" />
-              <AlertTitle>No Detail</AlertTitle>
-              <AlertDescription>Please select a channel</AlertDescription>
-            </Alert>
-          </div>
+          <Alert>
+            <EyeOff className="w-4 h-4" />
+            <AlertTitle>No Detail</AlertTitle>
+            <AlertDescription>Please select a channel</AlertDescription>
+          </Alert>
         )}
       </div>
     </div>
