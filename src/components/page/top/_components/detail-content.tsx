@@ -27,7 +27,7 @@ export const DetailContent: React.FC<DetailContentProps> = async ({ threadId }) 
   }
 
   return (
-    <div className="flex flex-col gap-4 py-4">
+    <div className="flex flex-col gap-4">
       <div className="flex gap-4 items-end flex-wrap">
         <p className="text-xl font-bold">{detail.thread.title}</p>
         <p className="text-sm text-muted-foreground">by {detail.thread.user}</p>
